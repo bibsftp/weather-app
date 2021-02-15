@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/weather-app/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/weather-app/static/js/main.e82bc049.chunk.js",
-    "main.js.map": "/weather-app/static/js/main.e82bc049.chunk.js.map",
+    "main.css": "/weather-app/static/css/main.b0725616.chunk.css",
+    "main.js": "/weather-app/static/js/main.4284ce58.chunk.js",
+    "main.js.map": "/weather-app/static/js/main.4284ce58.chunk.js.map",
     "runtime-main.js": "/weather-app/static/js/runtime-main.a2b20758.js",
     "runtime-main.js.map": "/weather-app/static/js/runtime-main.a2b20758.js.map",
-    "static/js/2.9f7f48b2.chunk.js": "/weather-app/static/js/2.9f7f48b2.chunk.js",
-    "static/js/2.9f7f48b2.chunk.js.map": "/weather-app/static/js/2.9f7f48b2.chunk.js.map",
+    "static/js/2.6df4434a.chunk.js": "/weather-app/static/js/2.6df4434a.chunk.js",
+    "static/js/2.6df4434a.chunk.js.map": "/weather-app/static/js/2.6df4434a.chunk.js.map",
     "static/js/3.ddbda82a.chunk.js": "/weather-app/static/js/3.ddbda82a.chunk.js",
     "static/js/3.ddbda82a.chunk.js.map": "/weather-app/static/js/3.ddbda82a.chunk.js.map",
     "index.html": "/weather-app/index.html",
-    "static/css/main.8c8b27cf.chunk.css.map": "/weather-app/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.9f7f48b2.chunk.js.LICENSE.txt": "/weather-app/static/js/2.9f7f48b2.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/weather-app/static/media/logo.6ce24c58.svg"
+    "static/css/main.b0725616.chunk.css.map": "/weather-app/static/css/main.b0725616.chunk.css.map",
+    "static/js/2.6df4434a.chunk.js.LICENSE.txt": "/weather-app/static/js/2.6df4434a.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/weather-app/static/media/warm-bg.97c5783c.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a2b20758.js",
-    "static/js/2.9f7f48b2.chunk.js",
-    "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.e82bc049.chunk.js"
+    "static/js/2.6df4434a.chunk.js",
+    "static/css/main.b0725616.chunk.css",
+    "static/js/main.4284ce58.chunk.js"
   ]
 }
