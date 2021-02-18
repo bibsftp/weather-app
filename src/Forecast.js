@@ -9,6 +9,8 @@ const api = {
 
     const [query, setQuery] = useState('');
     const [forecast, setForecast] = useState([]);
+    const [city, setCity] = useState();
+    const [country, setCountry] = useState();
 
   const search = evt => {
     if (evt.key === "Enter") {
@@ -25,6 +27,8 @@ const api = {
         setForecast(dailyData);
         console.log(dailyData);
 
+        setCity(result.city && result.city.name);
+        setCountry(result.city && result.city.country);
       });
 
     }
@@ -54,35 +58,30 @@ return (
      onKeyPress={search}
      />
 
+    <div className="location">{city}, {country}</div>
      {Array.isArray(forecast)?
       forecast.map((day, index) => (
-       
-       
         <div className="weather-box" key={index}>
           <div className="location-box">
-        <div className="location">{forecast.name}, {forecast.country}
-        {console.log(forecast)}</div>
-          <div className="date">
-          {dateBuilder(new Date(day.dt * 1000))
-          }
-          </div>
-          <div className="temp">
-            {Math.round(day.main.temp)}°c
-            <br/>
-            <div className ="minmaxhumidity">
-            Max: {Math.round(day.main.temp_max)}°c
-            <br/>
-            Min: {Math.round(day.main.temp_min)}°c
-            <br/>
-            Humidity: {Math.round(day.main.humidity)}
-            <br/>
-            <div className="weather">{day.weather[0].main}</div>
-          </div>
-          </div>
+            <div className="date">
+              {dateBuilder(new Date(day.dt * 1000))}
+            </div>
+            <div className="temp">
+              {Math.round(day.main.temp)}°c
+              <br/>
+              <div className ="minmaxhumidity">
+                Max: {Math.round(day.main.temp_max)}°c
+                <br/>
+                Min: {Math.round(day.main.temp_min)}°c
+                <br/>
+                Humidity: {Math.round(day.main.humidity)}
+                <br/>
+              <div className="weather">{day.weather[0].main}</div>
+            </div>
+            </div>
           </div>
         </div>
-        
-      ) )
+      ))
 // https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
 
      : <div> "No data" </div>}
