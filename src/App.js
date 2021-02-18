@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Forecast from "./Forecast";
+
 const api = {
   key: "97f6c11a941a6c4ff34b1c26885988e1",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -25,6 +27,7 @@ function App() {
           console.log(result);
         });
     }
+    evt.preventDefault();
   }
   const dateBuilder = (d) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -46,8 +49,10 @@ function App() {
         : 'app') 
       : 'app'}>
       <main>
+      <Forecast/>
         <div className="search-box">
-          <input 
+<form onSubmit={search}>
+          <input
            type="text"
            className="search-bar"
            placeholder="Search..."
@@ -55,7 +60,7 @@ function App() {
            value={query}
            onKeyPress={search}
            />
-
+           </form>
         </div>
         {isValid ?
           <div>

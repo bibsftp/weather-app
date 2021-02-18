@@ -25,6 +25,16 @@ main {
   padding: 25px;
 }
 
+.title {
+  color: #FFF;
+  font-size: 60px;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 50, 0.5);
+  padding: 15px 25px;
+}
+
 .search-box {
   width: 100%;
   margin: 0 0 75px;
@@ -56,6 +66,8 @@ main {
   background-color: rgba(255, 255, 255, 0.75);
 }
 
+
+
 .location-box .location {
   color: #FFF;
   font-size: 32px;
@@ -75,6 +87,17 @@ main {
 
 .weather-box {
   text-align: center;
+}
+
+.error {
+  position: relative;
+  display: inline-block;
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  padding: 5px 10px 30px 5px;
+
 }
 
 .weather-box .temp {
@@ -100,6 +123,7 @@ main {
   font-size: 48px;
   font-weight: 700;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  pointer-events: none;
 }
 
 .error {
