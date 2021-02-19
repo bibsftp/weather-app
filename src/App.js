@@ -49,6 +49,9 @@ function App() {
         : 'app')
       : 'app'}>
       <main>
+      <div className="title">Weather Finder</div>
+      <br/>
+      <br/>
       <Forecast/>
         <div className="search-box">
           <input
