@@ -53,15 +53,7 @@ function App() {
       <br/>
       <br/>
       <Forecast/>
-          <br/>
-          <br/>
-          <br/>
-        {
-          /* 2. display this if the error state is set */
-          ( invalidInputError ) ? ( <div className="error">Could not find the weather for this location.</div> ) : ('')
-        }
         <div className="search-box">
-<form onSubmit={search}>
           <input
            type="text"
            className="search-bar"
