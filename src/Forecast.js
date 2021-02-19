@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const api = {
     key: "97f6c11a941a6c4ff34b1c26885988e1",
@@ -58,7 +58,7 @@ return (
      onKeyPress={search}
      />
 
-    <div className="location">{city}, {country}</div>
+    <div className="location">{city} {country}</div>
      {Array.isArray(forecast)?
       forecast.map((day, index) => (
         <div className="weather-box" key={index}>
@@ -82,23 +82,11 @@ return (
           </div>
         </div>
       ))
-// https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
-
      : <div> "No data" </div>}
 
-
-
-     {/* map over forecast object */}
-     {/* type array */}
-     {/* forecast.map
-     arrow function each item
-     return block that should be rendered */}
   </div>
 
-
-
 );
-
 
 }
 
