@@ -75,8 +75,8 @@ function App() {
           )}
           </div>
           : 
-              <div>
-                  Please enter a valid City name.
+              <div className="error">
+                Please enter a valid City Name.
               </div>
                         
                     }
