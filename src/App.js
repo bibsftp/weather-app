@@ -19,7 +19,7 @@ function App() {
           if (result.cod !== 200) {
             setIsValid(false);
             return;
-          }  
+          }
 
           setWeather(result);
           setQuery('');
@@ -27,7 +27,7 @@ function App() {
           console.log(result);
         });
     }
-    evt.preventDefault();
+    //evt.preventDefault();
   }
   const dateBuilder = (d) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -43,15 +43,14 @@ function App() {
 
   return (
     <div className={
-      (typeof weather.main !== "undefined") 
-      ? ((weather.main.temp > 16) 
-        ? 'app warm' 
-        : 'app') 
+      (typeof weather.main !== "undefined")
+      ? ((weather.main.temp > 16)
+        ? 'app warm'
+        : 'app')
       : 'app'}>
       <main>
       <Forecast/>
         <div className="search-box">
-<form onSubmit={search}>
           <input
            type="text"
            className="search-bar"
@@ -60,7 +59,6 @@ function App() {
            value={query}
            onKeyPress={search}
            />
-           </form>
         </div>
         {isValid ?
           <div>
@@ -79,12 +77,11 @@ function App() {
               </div>
           )}
           </div>
-          : 
+          :
               <div className="error">
                 Please enter a valid City Name.
               </div>
-                        
-                    }
+          }
        </main>
       
     </div>
