@@ -11,10 +11,27 @@ const api = {
     const [forecast, setForecast] = useState([]);
     const [city, setCity] = useState();
     const [country, setCountry] = useState();
+    const [invalidInputError, setInvalidInputError] = useState(false);
+
+    useEffect(() => {
+      navigator.geolocation.getCurrentPosition(position => {
+        console.log(position.coords.latitude)
+        console.log(position.coords.longitude)
+      })
+    }, []);
 
   const search = evt => {
-    if (evt.key === "Enter") {
+
+    setInvalidInputError(false);
+
+    if (query) {
       fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
+      .then(res => {
+        if (!res.ok) {
+          throw Error(res.status);
+        }
+        return res;
+      })
       .then(res => res.json())
       .then(result => {
         const dailyData = result.list.filter(reading => {
@@ -29,9 +46,14 @@ const api = {
 
         setCity(result.city && result.city.name);
         setCountry(result.city && result.city.country);
+      })
+      .catch(e => {
+        console.log('Cannot find weather for this location. Please fix your typso.');
+        // 1. turn the error "on" by setting an error state on the object
+        setInvalidInputError(true);
       });
-
-    }
+    } 
+    evt.preventDefault();
   }
 
   const dateBuilder = (d) => {
@@ -49,14 +71,20 @@ const api = {
 
 return (
     <div className="search-box">
+      {
+          /* 2. display this if the error state is set */
+          ( invalidInputError ) ? ( <div className="error">Could not find the weather for this location.</div> ) : ('')
+        }
+    <form onSubmit={search}>
     <input
      type="text"
      className="search-bar"
      placeholder="Get Forecast..."
      onChange={e => setQuery(e.target.value)}
      value={query}
-     onKeyPress={search}
+    //  onKeyPress={search}
      />
+     </form>
 
     <div className="location">{city} {country}</div>
      {Array.isArray(forecast)?
