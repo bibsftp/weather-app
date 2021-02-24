@@ -1,9 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Forecast from "./Forecast";
+import axios from "axios";
+
+const GOOGLE_API = {
+  key: "AIzaSyDoYEItNCsFASJLS1QHBqsQ-xGL48JAjXg",
+}
 
 const api = {
   key: "97f6c11a941a6c4ff34b1c26885988e1",
   base: "https://api.openweathermap.org/data/2.5/"
+}
+
+function useBrowserLocation(apiKey) {
+  const [locationBar, setLocationBar] = useState(null);
+  const googleBase = "https://maps.googleapis.com/maps/api/geocode/json";
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async position => {
+      const {coords:{latitude, longitude}} = position
+      console.log(position.coords.latitude)
+      console.log(position.coords.longitude)
+      const response = await axios.get(`${googleBase}?latlng=${latitude},${longitude}&key=${apiKey}`)
+    
+      console.log(response)
+      const city = response.data.results[0].address_components.find(
+        (locality) => locality.types.includes('postal_town')
+      );
+      setLocationBar(city.long_name);
+      console.log("CITY", city.long_name)
+    });
+  });
+
+  return locationBar;
 }
 
 function App() {
@@ -11,9 +39,26 @@ function App() {
   const [weather, setWeather] = useState({});
   const [isValid, setIsValid] = useState(true);
 
+  const discoveredLocation = useBrowserLocation(GOOGLE_API.key);
+  
+  useEffect(() => {
+    if (discoveredLocation === null) return
+    if (query.length > 0) return;
+    setQuery(discoveredLocation);
+  }, [discoveredLocation]);
+    //another variable, useState
+    //useEffect - set the variable
+    //use in query
+    //trigger search
+    //geolocation, updates, searchbox in one variable
+    //every time variable changes, new forecast
+    //listening for changes
+
   const search = evt => {
     if (evt.key === "Enter") {
         fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+        //check discoveredLocation
+        //useEffect
         .then(res => res.json())
         .then(result => {
           if (result.cod !== 200) {
@@ -59,6 +104,7 @@ function App() {
            className="search-bar"
            placeholder="Search..."
            onChange={e => setQuery(e.target.value)}
+
            value={query}
            onKeyPress={search}
            />

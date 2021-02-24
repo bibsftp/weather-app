@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 const api = {
     key: "97f6c11a941a6c4ff34b1c26885988e1",
     base: "https://api.openweathermap.org/data/2.5/"
@@ -13,12 +14,7 @@ const api = {
     const [country, setCountry] = useState();
     const [invalidInputError, setInvalidInputError] = useState(false);
 
-    useEffect(() => {
-      navigator.geolocation.getCurrentPosition(position => {
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
-      })
-    }, []);
+
 
   const search = evt => {
 
